@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AGI 2027</title>
+<style>
+body {
+  margin:0;
+  font-family: system-ui, sans-serif;
+  background:black;
+  color:#e0e0e0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+#countdown {
+  font-size:3rem;
+  text-align:center;
+}
+small { color:#888; }
+</style>
+</head>
+<body>
+<div id="countdown"></div>
+<script>
+const target = new Date("2027-12-31T23:59:59Z").getTime();
+function tick(){
+  const now = Date.now();
+  let d = target - now;
+  if(d < 0) d = 0;
+  const days = Math.floor(d / (1000*60*60*24));
+  const hrs  = Math.floor((d/(1000*60*60))%24);
+  const mins = Math.floor((d/(1000*60))%60);
+  const secs = Math.floor((d/1000)%60);
+  document.getElementById("countdown").innerHTML =
+    `<div>AGI 2027</div>
+     <div>${days}d ${hrs}h ${mins}m ${secs}s</div>
+     <small>A quest for AGI by 31 Dec 2027</small>`;
+}
+setInterval(tick,1000); tick();
+</script>
+</body>
+</html>
